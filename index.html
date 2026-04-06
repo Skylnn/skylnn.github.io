@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Gökhan | DevOps Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+/* ---------------- Body ---------------- */
+body {
+  margin:0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  color: #f1f5f9;
+  overflow-x:hidden;
+}
+
+/* ---------------- Particle Background ---------------- */
+#particles-js {
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ---------------- Header ---------------- */
+header {
+  text-align:center;
+  padding:80px 20px;
+}
+header h1 {
+  font-size:52px;
+  background: linear-gradient(90deg,#38bdf8,#06b6d4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+header p {
+  font-size:20px;
+  color:#38bdf8;
+}
+
+/* ---------------- Container ---------------- */
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+/* ---------------- Grid ---------------- */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:20px;
+}
+
+/* ---------------- Card ---------------- */
+.card {
+  background: linear-gradient(145deg,#1e293b,#0f172a);
+  border-radius:15px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(0,0,0,0.2);
+  transition:0.5s all;
+}
+.card img {
+  width:100%;
+  height:150px;
+  object-fit:cover;
+}
+.card h3 {
+  margin:10px 0 5px;
+}
+.card p {
+  font-size:14px;
+}
+.card:hover {
+  transform: scale(1.05) rotateX(3deg);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ---------------- Tags ---------------- */
+.tag {
+  display:inline-block;
+  background:#06b6d4;
+  color:black;
+  padding:5px 12px;
+  margin:5px;
+  border-radius:6px;
+  font-size:13px;
+  font-weight:bold;
+  transition:0.3s;
+}
+.tag:hover {
+  background:#38bdf8;
+}
+
+/* ---------------- Buttons ---------------- */
+button {
+  background:#06b6d4;
+  color:black;
+  border:none;
+  padding:8px 12px;
+  margin-top:10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+button:hover {
+  background:#38bdf8;
+  transform:scale(1.05);
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+  text-align:center;
+  padding:35px;
+  color:#94a3b8;
+}
+</style>
+</head>
+<body>
+
+<!-- Particle Container -->
+<div id="particles-js"></div>
+
+<header>
+<h1>Gökhan</h1>
+<p>DevOps & System Administrator </p>
+</header>
+
+<div class="container">
+<h2>🧑‍💻 Hakkımda</h2>
+<div class="card" data-aos="fade-up">
+  <p>Linux, Nginx, Kubernetes ve sistem yönetimi üzerine kendimi geliştiriyorum. Gerçek projeler yaparak DevOps alanında ilerliyorum.</p>
+</div>
+
+<h2>🛠️ Teknolojiler</h2>
+<div class="card" data-aos="fade-up" data-aos-delay="100">
+  <span class="tag">Linux</span>
+  <span class="tag">Nginx</span>
+  <span class="tag">MySQL</span>
+  <span class="tag">Docker</span>
+  <span class="tag">Kubernetes</span>
+</div>
+
+<h2>📂 Projeler</h2>
+<div class="grid">
+  <div class="card" data-aos="fade-up">
+    <img src="https://via.placeholder.com/400x150.png?text=Nginx" alt="Nginx">
+    <h3>Nginx Kurulum</h3>
+    <p>Ubuntu 24.04 üzerinde Nginx + SSL yapılandırması</p>
+    <a href="#"><button>GitHub Repo</button></a>
+  </div>
+
+  <div class="card" data-aos="fade-up" data-aos-delay="100">
+    <img src="https://via.placeholder.com/400x150.png?text=Kubernetes" alt="Kubernetes">
+    <h3>Kubernetes Lab</h3>
+    <p>Multi-node Kubernetes cluster kurulumu</p>
+    <a href="#"><button>GitHub Repo</button></a>
+  </div>
+
+  <div class="card" data-aos="fade-up" data-aos-delay="200">
+    <img src="https://via.placeholder.com/400x150.png?text=Linux+Script" alt="Linux Script">
+    <h3>Linux Scriptler</h3>
+    <p>Bash scriptleri ile sistem yönetimi otomasyonu</p>
+    <a href="#"><button>GitHub Repo</button></a>
+  </div>
+</div>
+
+<h2>📫 İletişim</h2>
+<div class="card" data-aos="fade-up" data-aos-delay="300">
+  <p>Email: </p>
+</div>
+</div>
+
+<footer>
+<p>© 2026 Gökhan</p>
+</footer>
+
+<!-- AOS.js -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,easing:"ease-in-out",once:true});
+</script>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS('particles-js',{
+  particles: {
+    number: {value:60,density:{enable:true,value_area:800}},
+    color:{value:"#06b6d4"},
+    shape:{type:"circle"},
+    opacity:{value:0.3,random:true},
+    size:{value:4,random:true},
+    line_linked:{enable:true,distance:150,color:"#06b6d4",opacity:0.2,width:1},
+    move:{enable:true,speed:2,direction:"none",random:false,straight:false,out_mode:"out",bounce:false}
+  },
+  interactivity:{
+    detect_on:"canvas",
+    events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"},resize:true},
+    modes:{repulse:{distance:100,duration:0.4},push:{particles_nb:4}}
+  },
+  retina_detect:true
+});
+</script>
+
+</body>
+</html>
