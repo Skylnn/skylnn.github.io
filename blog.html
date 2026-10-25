@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Linux, sistem yönetimi ve DevOps üzerine notlar ve rehberler">
   <title>Blog | Gökhan</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="arka"></canvas>
+  <div id="ilerleme"></div>
 
   <header class="nav">
     <a href="index.html" class="logo">skylnn<span>.</span></a>
@@ -18,12 +20,30 @@
     </nav>
   </header>
 
-  <main class="bolum">
-    <h2>Blog</h2>
-    <input id="ara" type="search" placeholder="Yazılarda ara...">
-    <div id="liste" class="kartlar">Yükleniyor...</div>
+  <main>
+    <section class="blog-ust">
+      <p class="selam">📝 Notlar &amp; Rehberler</p>
+      <h1>Blog</h1>
+      <p class="blog-alt">Linux, sistem yönetimi ve DevOps üzerine öğrendiklerimi yazıyorum.</p>
+      <div class="blog-arac">
+        <input id="ara" type="search" placeholder="Yazılarda ara...">
+        <span id="sayac"></span>
+      </div>
+      <div id="etiketler"></div>
+    </section>
+
+    <div class="blog-govde">
+      <aside class="blog-yan">
+        <div class="c-baslik">Tarih cetveli</div>
+        <nav id="cetvel" aria-label="Tarih cetveli"></nav>
+      </aside>
+      <div id="liste" class="zaman">Yükleniyor...</div>
+    </div>
   </main>
 
+  <footer>© 2026 Gökhan · skylnn.com</footer>
+
+  <button id="yukari" aria-label="Yukarı çık">↑</button>
   <script src="script.js"></script>
   <script src="blog.js"></script>
 </body>
