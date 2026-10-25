@@ -2,6 +2,7 @@
 title: "Merhaba Dünya"
 date: 2026-10-25
 summary: "Blogumun ilk yazısı. Sistemin çalıştığını test ediyorum."
+tags: test, deneme
 ---
 
 ## İlk yazı
