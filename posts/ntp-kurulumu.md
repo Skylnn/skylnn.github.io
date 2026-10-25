@@ -2,6 +2,7 @@
 title: "Ubuntu'da NTP (Chrony) ile Saat Senkronizasyonu"
 date: 2026-10-24
 summary: "Chrony kurulumu, doğrulama ve kendi ağın için yerel NTP sunucusu kurma."
+tags: ubuntu, linux, ntp, Chrony
 ---
 
 ## Neden saat senkronizasyonu önemli?
