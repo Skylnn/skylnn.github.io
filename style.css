@@ -1,24 +1,35 @@
+/* ---------- Renkler (açık ve koyu tema) ---------- */
 :root {
-  --bg: #ffffff; --kart: #f4f4f8; --text: #14141f;
-  --soluk: #5b5b70; --accent: #6366f1;
+  --bg: #ffffff;
+  --kart: #f4f4f8;
+  --text: #14141f;
+  --soluk: #5b5b70;
+  --accent: #6366f1;
 }
 [data-theme="dark"] {
-  --bg: #0b0b12; --kart: #161622; --text: #eaeaf0;
+  --bg: #0b0b12;
+  --kart: #161622;
+  --text: #eaeaf0;
   --soluk: #9a9ab0;
 }
 
+/* ---------- Genel ayarlar ---------- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--bg); color: var(--text);
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.7; transition: background .3s, color .3s;
+  line-height: 1.7;
+  transition: background .3s, color .3s;
 }
 
+/* ---------- Üst menü ---------- */
 .nav {
   position: sticky; top: 0; z-index: 10;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1rem 5%; background: var(--bg);
+  padding: 1rem 5%;
+  background: var(--bg);
   border-bottom: 1px solid var(--kart);
 }
 .logo { font-weight: 800; font-size: 1.3rem; color: var(--text); text-decoration: none; }
@@ -28,12 +39,14 @@ body {
 .nav nav a:hover { color: var(--accent); }
 #tema { background: none; border: none; font-size: 1.3rem; cursor: pointer; }
 
-.hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; }
+/* ---------- Karşılama alanı ---------- */
+.hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5%; max-width: 1000px; margin: 0 auto; }
 .selam { color: var(--accent); font-weight: 600; }
 .hero h1 { font-size: clamp(3rem, 10vw, 6rem); line-height: 1.1; }
 .rol { font-size: 1.5rem; color: var(--soluk); margin: .5rem 0 2rem; }
 #daktilo { color: var(--accent); border-right: 2px solid var(--accent); padding-right: 4px; }
 
+/* ---------- Butonlar ---------- */
 .butonlar { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn {
   display: inline-block; padding: .8rem 1.6rem; border-radius: 10px;
@@ -43,13 +56,19 @@ body {
 .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(99,102,241,.4); }
 .btn.ikincil { background: transparent; color: var(--text); border: 2px solid var(--accent); }
 
+/* ---------- Bölümler ---------- */
 .bolum { padding: 4rem 5%; max-width: 1000px; margin: 0 auto; }
 .bolum h2 { font-size: 2rem; margin-bottom: 1.2rem; }
-.bolum h2::after { content: ""; display: block; width: 50px; height: 4px; background: var(--accent); margin-top: .4rem; border-radius: 2px; }
+.bolum h2::after {
+  content: ""; display: block; width: 50px; height: 4px;
+  background: var(--accent); margin-top: .4rem; border-radius: 2px;
+}
 
+/* ---------- Teknoloji etiketleri ---------- */
 .etiketler { display: flex; flex-wrap: wrap; gap: .7rem; }
 .etiketler span { background: var(--kart); padding: .5rem 1rem; border-radius: 999px; font-weight: 500; }
 
+/* ---------- Proje kartları ---------- */
 .kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 .kart {
   background: var(--kart); padding: 1.5rem; border-radius: 14px;
@@ -62,10 +81,11 @@ body {
 
 footer { text-align: center; padding: 2rem; color: var(--soluk); }
 
-/* Kaydırınca beliren animasyon */
+/* ---------- Kaydırınca beliren animasyon ---------- */
 .gizli { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
 .gizli.gorunur { opacity: 1; transform: none; }
 
+/* ---------- Telefon düzeni ---------- */
 @media (max-width: 700px) {
   .nav nav a { display: none; }
 }
