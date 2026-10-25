@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Gökhan - DevOps ve Sistem Yöneticisi portföyü">
   <title>Gökhan | DevOps Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <canvas id="arka"></canvas>
+  <canvas id="arka"></canvas>
+  <div id="ilerleme"></div>
 
   <header class="nav">
     <a href="index.html" class="logo">skylnn<span>.</span></a>
-    <nav>
+    <button id="menu" aria-label="Menü" aria-expanded="false">☰</button>
+    <nav id="menuler">
       <a href="#hakkimda">Hakkımda</a>
       <a href="#teknolojiler">Teknolojiler</a>
       <a href="#projeler">Projeler</a>
@@ -24,12 +29,32 @@
 
   <main>
     <section class="hero">
-      <p class="selam">Merhaba, ben</p>
-      <h1>Gökhan</h1>
-      <p class="rol">DevOps &amp; <span id="daktilo"></span></p>
-      <div class="butonlar">
-        <a class="btn" href="#projeler">Projelerime Bak</a>
-        <a class="btn ikincil" href="#iletisim">İletişime Geç</a>
+      <div class="hero-sol">
+        <p class="selam">👋 Merhaba, ben</p>
+        <h1>Gökhan</h1>
+        <p class="rol">DevOps &amp; <span id="daktilo"></span></p>
+        <p class="kisa">Linux sunucuları, Kubernetes cluster'ları ve otomasyon üzerine gerçek projeler geliştiriyorum.</p>
+        <div class="butonlar">
+          <a class="btn" href="#projeler">Projelerime Bak</a>
+          <a class="btn ikincil" href="#iletisim">İletişime Geç</a>
+        </div>
+        <div class="sosyal">
+          <a href="https://github.com/Skylnn" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="blog.html">Blog →</a>
+        </div>
+      </div>
+
+      <div class="terminal" aria-hidden="true">
+        <div class="t-bar"><i></i><i></i><i></i><span>gokhan@skylnn: ~</span></div>
+        <pre id="t-icerik"></pre>
+      </div>
+    </section>
+
+    <section class="bolum">
+      <div class="statlar">
+        <div class="stat"><b data-hedef="3">0</b><span>Proje</span></div>
+        <div class="stat"><b data-hedef="5">0</b><span>Teknoloji</span></div>
+        <div class="stat"><b data-hedef="100" data-ek="%">0</b><span>Merak</span></div>
       </div>
     </section>
 
@@ -40,8 +65,27 @@
 
     <section id="teknolojiler" class="bolum">
       <h2>Teknolojiler</h2>
-      <div class="etiketler">
-        <span>Linux</span><span>Nginx</span><span>MySQL</span><span>Docker</span><span>Kubernetes</span>
+      <div class="beceriler">
+        <div class="beceri" data-seviye="70">
+          <div class="beceri-ust"><span>🐧 Linux</span><span>70%</span></div>
+          <div class="cubuk"><i></i></div>
+        </div>
+        <div class="beceri" data-seviye="65">
+          <div class="beceri-ust"><span>🌐 Nginx</span><span>65%</span></div>
+          <div class="cubuk"><i></i></div>
+        </div>
+        <div class="beceri" data-seviye="50">
+          <div class="beceri-ust"><span>🗄️ MySQL</span><span>50%</span></div>
+          <div class="cubuk"><i></i></div>
+        </div>
+        <div class="beceri" data-seviye="55">
+          <div class="beceri-ust"><span>🐳 Docker</span><span>55%</span></div>
+          <div class="cubuk"><i></i></div>
+        </div>
+        <div class="beceri" data-seviye="45">
+          <div class="beceri-ust"><span>☸️ Kubernetes</span><span>45%</span></div>
+          <div class="cubuk"><i></i></div>
+        </div>
       </div>
     </section>
 
@@ -49,32 +93,41 @@
       <h2>Projeler</h2>
       <div class="kartlar">
         <article class="kart">
+          <div class="ikon">🌐</div>
           <h3>Nginx Kurulum</h3>
           <p>Ubuntu 24.04 üzerinde Nginx + SSL yapılandırması</p>
+          <div class="mini"><span>Ubuntu</span><span>Nginx</span><span>SSL</span></div>
           <a href="https://github.com/Skylnn" target="_blank" rel="noopener">GitHub'da Gör →</a>
         </article>
         <article class="kart">
+          <div class="ikon">☸️</div>
           <h3>Kubernetes Lab</h3>
           <p>Multi-node Kubernetes cluster kurulumu</p>
+          <div class="mini"><span>Kubernetes</span><span>Cluster</span><span>Lab</span></div>
           <a href="https://github.com/Skylnn" target="_blank" rel="noopener">GitHub'da Gör →</a>
         </article>
         <article class="kart">
+          <div class="ikon">🐧</div>
           <h3>Linux Scriptler</h3>
           <p>Bash scriptleri ile sistem yönetimi otomasyonu</p>
+          <div class="mini"><span>Bash</span><span>Linux</span><span>Otomasyon</span></div>
           <a href="https://github.com/Skylnn" target="_blank" rel="noopener">GitHub'da Gör →</a>
         </article>
       </div>
     </section>
 
     <section id="iletisim" class="bolum">
-      <h2>İletişim</h2>
-      <p>Benimle çalışmak ya da konuşmak istersen:</p>
-      <a class="btn" href="mailto:BURAYA_EMAIL_YAZ">BURAYA_EMAIL_YAZ</a>
+      <div class="cta">
+        <h2>Birlikte çalışalım</h2>
+        <p>Bir proje, iş fırsatı ya da sadece sohbet için yaz.</p>
+        <a class="btn" href="mailto:BURAYA_EMAIL_YAZ">BURAYA_EMAIL_YAZ</a>
+      </div>
     </section>
   </main>
 
-  <footer>© 2026 Gökhan</footer>
+  <footer>© 2026 Gökhan · skylnn.com</footer>
 
+  <button id="yukari" aria-label="Yukarı çık">↑</button>
   <script src="script.js"></script>
 </body>
 </html>
