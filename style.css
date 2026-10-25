@@ -299,3 +299,103 @@ body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; }
 @media (prefers-reduced-motion: reduce) {
   .terminal { animation: none; }
 }
+
+/* ================= BLOG v2: ZAMAN ÇİZELGESİ ================= */
+
+/* Üst bölüm */
+.blog-ust { max-width: 1000px; margin: 0 auto; padding: 3rem 5% 0; }
+.blog-ust h1 {
+  font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.1;
+  background: linear-gradient(90deg, var(--text), var(--accent), #ec4899);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.blog-alt { color: var(--soluk); margin: .5rem 0 1.5rem; max-width: 34rem; }
+.blog-arac { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.blog-arac #ara { flex: 1; min-width: 200px; margin-bottom: 0; }
+#sayac { color: var(--soluk); font-size: .9rem; }
+
+/* Etiket düğmeleri */
+#etiketler { display: flex; flex-wrap: wrap; gap: .5rem; }
+.etk-btn {
+  font: inherit; font-size: .85rem; cursor: pointer;
+  padding: .3rem .85rem; border-radius: 99px;
+  background: color-mix(in srgb, var(--kart) 65%, transparent);
+  color: var(--soluk); border: 1px solid transparent;
+  transition: border-color .2s, color .2s, transform .2s;
+}
+.etk-btn em { font-style: normal; opacity: .7; margin-left: .2rem; }
+.etk-btn:hover { border-color: var(--accent); color: var(--text); transform: translateY(-2px); }
+.etk-btn.secili { background: var(--accent); color: #fff; }
+
+/* İki sütun: cetvel + yazılar */
+.blog-govde {
+  max-width: 1000px; margin: 0 auto; padding: 2rem 5% 4rem;
+  display: grid; grid-template-columns: 190px 1fr; gap: 2.5rem;
+}
+
+/* ---------- Tarih cetveli ---------- */
+.blog-yan { position: sticky; top: 90px; align-self: start; }
+.c-baslik { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--soluk); margin-bottom: .8rem; }
+#cetvel { border-left: 2px solid color-mix(in srgb, var(--soluk) 35%, transparent); }
+.c-yil { font-weight: 800; font-size: 1.1rem; margin: .8rem 0 .2rem 1rem; }
+.c-ay {
+  position: relative; display: flex; justify-content: space-between; align-items: center; gap: .5rem;
+  padding: .3rem .4rem .3rem 1rem; color: var(--soluk); text-decoration: none; transition: color .2s;
+}
+.c-ay:hover { color: var(--text); }
+.c-ay i {
+  position: absolute; left: -7px; top: 50%; width: 12px; height: 12px; margin-top: -6px;
+  border-radius: 50%; background: var(--bg); border: 2px solid var(--soluk);
+  transition: transform .25s, background .25s, border-color .25s;
+}
+.c-ay em { font-style: normal; font-size: .75rem; background: var(--kart); border-radius: 99px; padding: 0 .55rem; }
+.c-ay.aktif { color: var(--accent); font-weight: 600; }
+.c-ay.aktif i { background: var(--accent); border-color: var(--accent); transform: scale(1.35); }
+.c-gunler { display: flex; flex-wrap: wrap; gap: .3rem; padding: .1rem 0 .5rem 1rem; }
+.c-gunler a {
+  font-size: .75rem; padding: .05rem .5rem; border-radius: 6px;
+  background: var(--kart); color: var(--soluk); text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.c-gunler a:hover { background: var(--accent); color: #fff; }
+
+/* ---------- Zaman çizelgesi ---------- */
+.ay {
+  position: relative; padding-left: 1.6rem; margin-bottom: 2rem; scroll-margin-top: 90px;
+  border-left: 2px solid color-mix(in srgb, var(--soluk) 35%, transparent);
+}
+.ay-baslik { display: flex; align-items: baseline; gap: .8rem; font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; }
+.ay-baslik small { font-weight: 400; font-size: .85rem; color: var(--soluk); }
+.z-oge { position: relative; margin-bottom: 1.2rem; scroll-margin-top: 90px; }
+.nokta {
+  position: absolute; left: calc(-1.6rem - 7px); top: 1.5rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.z-oge .kart h3 { margin: .3rem 0 .4rem; }
+.meta { font-size: .8rem; color: var(--soluk); }
+.yeni {
+  font-size: .7rem; padding: .1rem .5rem; border-radius: 99px; margin-left: .3rem;
+  background: linear-gradient(90deg, var(--accent), #ec4899); color: #fff;
+}
+.etk { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+.etk span { font-size: .75rem; color: var(--accent); }
+.bos { color: var(--soluk); padding: 2rem 0; }
+
+/* ---------- Telefon ---------- */
+@media (max-width: 800px) {
+  .blog-govde { grid-template-columns: 1fr; gap: 1rem; padding-top: 1rem; }
+  .blog-yan {
+    top: 64px; z-index: 5; padding: .5rem 0;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .c-baslik, .c-gunler { display: none; }
+  #cetvel { display: flex; align-items: center; gap: .5rem; overflow-x: auto; border-left: 0; padding-bottom: .2rem; }
+  .c-yil { margin: 0 .2rem 0 0; font-size: .9rem; }
+  .c-ay { white-space: nowrap; padding: .25rem .8rem; border: 1px solid var(--kart); border-radius: 99px; }
+  .c-ay i { display: none; }
+  .c-ay.aktif { border-color: var(--accent); }
+  .ay, .z-oge { scroll-margin-top: 130px; }
+}
+
