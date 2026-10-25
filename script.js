@@ -91,12 +91,12 @@ if (tuval && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
   boyutla();
   ciz();
 }
-
-// 5) Kartlarda fare ışığı
-document.querySelectorAll(".kart").forEach(k => {
-  k.addEventListener("mousemove", e => {
-    const r = k.getBoundingClientRect();
-    k.style.setProperty("--x", (e.clientX - r.left) + "px");
-    k.style.setProperty("--y", (e.clientY - r.top) + "px");
-  });
+// 5) Kartlarda fare ışığı (sonradan eklenen kartlarda da çalışır)
+document.addEventListener("mousemove", e => {
+  const k = e.target.closest(".kart");
+  if (!k) return;
+  const r = k.getBoundingClientRect();
+  k.style.setProperty("--x", (e.clientX - r.left) + "px");
+  k.style.setProperty("--y", (e.clientY - r.top) + "px");
 });
+
