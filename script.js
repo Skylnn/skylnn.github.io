@@ -99,4 +99,92 @@ document.addEventListener("mousemove", e => {
   k.style.setProperty("--x", (e.clientX - r.left) + "px");
   k.style.setProperty("--y", (e.clientY - r.top) + "px");
 });
+// 6) Üstte ilerleme çubuğu + yukarı çık düğmesi
+const ilerleme = document.querySelector("#ilerleme");
+const yukari = document.querySelector("#yukari");
+addEventListener("scroll", () => {
+  const h = document.documentElement;
+  const oran = h.scrollTop / ((h.scrollHeight - h.clientHeight) || 1);
+  if (ilerleme) ilerleme.style.width = (oran * 100) + "%";
+  if (yukari) yukari.classList.toggle("goster", h.scrollTop > 400);
+});
+if (yukari) yukari.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
 
+// 7) Mobil menü
+const menuDugme = document.querySelector("#menu");
+const menuler = document.querySelector("#menuler");
+if (menuDugme && menuler) {
+  const kapat = () => { menuler.classList.remove("acik"); menuDugme.textContent = "☰"; menuDugme.setAttribute("aria-expanded", "false"); };
+  menuDugme.addEventListener("click", () => {
+    const acik = menuler.classList.toggle("acik");
+    menuDugme.textContent = acik ? "✕" : "☰";
+    menuDugme.setAttribute("aria-expanded", acik);
+  });
+  menuler.querySelectorAll("a").forEach(a => a.addEventListener("click", kapat));
+}
+
+// 8) Menüde bulunduğun bölümü vurgula
+const menuLinkleri = document.querySelectorAll('#menuler a[href^="#"]');
+if (menuLinkleri.length) {
+  const iz = new IntersectionObserver(girdiler => {
+    girdiler.forEach(g => {
+      if (g.isIntersecting) {
+        menuLinkleri.forEach(a => a.classList.toggle("aktif", a.getAttribute("href") === "#" + g.target.id));
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section[id]").forEach(s => iz.observe(s));
+}
+
+// 9) Sayaçlar: görünür olunca 0'dan hedefe sayar
+document.querySelectorAll("[data-hedef]").forEach(el => {
+  const hedef = +el.dataset.hedef, ek = el.dataset.ek || "";
+  new IntersectionObserver((girdiler, gozlem) => {
+    if (!girdiler[0].isIntersecting) return;
+    gozlem.disconnect();
+    const sure = 1200, basla = performance.now();
+    (function adim(simdi) {
+      const p = Math.min((simdi - basla) / sure, 1);
+      el.textContent = Math.round(hedef * (1 - Math.pow(1 - p, 3))) + ek;
+      if (p < 1) requestAnimationFrame(adim);
+    })(basla);
+  }, { threshold: 0.6 }).observe(el);
+});
+
+// 10) Teknoloji çubukları: görünür olunca dolar
+document.querySelectorAll(".beceri").forEach(b => {
+  new IntersectionObserver((girdiler, gozlem) => {
+    if (!girdiler[0].isIntersecting) return;
+    b.querySelector(".cubuk i").style.width = b.dataset.seviye + "%";
+    gozlem.disconnect();
+  }, { threshold: 0.5 }).observe(b);
+});
+
+// 11) Terminal animasyonu
+const terminal = document.querySelector("#t-icerik");
+if (terminal) {
+  const satirlar = [
+    { k: "whoami", c: "gokhan | devops & sysadmin" },
+    { k: "kubectl get nodes", c: "master    Ready\nworker-1  Ready\nworker-2  Ready" },
+    { k: "systemctl is-active nginx", c: "active" },
+    { k: "echo $MOTTO", c: "Her gün biraz daha otomasyon." }
+  ];
+  const bekle = ms => new Promise(r => setTimeout(r, ms));
+
+  (async function calistir() {
+    while (true) {
+      let gecmis = "";
+      for (const s of satirlar) {
+        for (let i = 0; i <= s.k.length; i++) {
+          terminal.innerHTML = gecmis + '<span class="p">$</span> ' + s.k.slice(0, i) + '<span class="im">▋</span>';
+          await bekle(55);
+        }
+        await bekle(300);
+        gecmis += '<span class="p">$</span> ' + s.k + '\n<span class="o">' + s.c + '</span>\n';
+        terminal.innerHTML = gecmis;
+        await bekle(900);
+      }
+      await bekle(3000);
+    }
+  })();
+}
