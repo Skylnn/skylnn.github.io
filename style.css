@@ -89,3 +89,71 @@ footer { text-align: center; padding: 2rem; color: var(--soluk); }
 @media (max-width: 700px) {
   .nav nav a { display: none; }
 }
+/* ================= GÖRSEL EFEKTLER ================= */
+
+/* Parçacık tuvali: her şeyin arkasında */
+#arka {
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: -1; pointer-events: none;
+}
+
+/* Kayan renkli ışık lekeleri */
+body::before {
+  content: ""; position: fixed; inset: 0;
+  z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(600px circle at 15% 20%, rgba(99,102,241,.22), transparent 60%),
+    radial-gradient(500px circle at 85% 70%, rgba(236,72,153,.15), transparent 60%);
+  animation: akis 14s ease-in-out infinite alternate;
+}
+@keyframes akis {
+  to { transform: translate(40px, -30px) scale(1.15); }
+}
+
+/* Cam efektli menü */
+.nav {
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Akan renkli başlık */
+.hero h1 {
+  background: linear-gradient(90deg, var(--text), var(--accent), #ec4899, var(--text));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: renk 8s linear infinite;
+}
+@keyframes renk {
+  to { background-position: 300% 0; }
+}
+
+/* Cam efektli kartlar + fare ışığı */
+.kart {
+  position: relative; overflow: hidden;
+  background: color-mix(in srgb, var(--kart) 65%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.kart::before {
+  content: ""; position: absolute; inset: 0;
+  pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(300px circle at var(--x, 50%) var(--y, 50%), rgba(99,102,241,.2), transparent 60%);
+}
+.kart:hover::before { opacity: 1; }
+
+/* Teknoloji etiketleri */
+.etiketler span {
+  background: color-mix(in srgb, var(--kart) 65%, transparent);
+  border: 1px solid transparent;
+  transition: transform .2s, border-color .2s;
+}
+.etiketler span:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+/* Hareketten rahatsız olanlar için animasyonları kapat */
+@media (prefers-reduced-motion: reduce) {
+  body::before, .hero h1 { animation: none; }
+}
