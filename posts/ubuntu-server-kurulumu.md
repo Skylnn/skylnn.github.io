@@ -2,6 +2,7 @@
 title: "Ubuntu Server 24.04 LTS Kurulumu"
 date: 2026-10-23
 summary: "USB'den başlayıp ilk ayarlara kadar, adım adım Ubuntu Server kurulumu."
+tags: ubuntu, linux, kurulum
 ---
 
 ## Giriş
