@@ -2,6 +2,7 @@
 title: "Ubuntu 24.04'e Zabbix 7.0 LTS Kurulumu"
 date: 2026-10-25
 summary: "Nginx ve MySQL ile Zabbix sunucusu, web arayüzü ve ajan kurulumu."
+tags: ubuntu, linux, kurulum, zabbix
 ---
 
 ## Zabbix nedir?
